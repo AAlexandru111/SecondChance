@@ -3,11 +3,7 @@ import { useEffect, useState } from "react";
 import { FieldValues, FormProvider, useForm } from "react-hook-form";
 import AddressForm from "./AdressForm";
 import PaymentForm from "./PaymentForm";
-import Review from "./Review";
-import { yupResolver } from '@hookform/resolvers/yup';
-import { validationSchema } from "./checkoutValidation";
 import agent from "../../features/api/agent";
-import { clearBasket } from "../basket/basketSlice";
 import { LoadingButton } from "@mui/lab";
 import { useAppDispatch, useAppSelector } from "../../features/store/configureStore";
 import { StripeElementType } from "@stripe/stripe-js";
@@ -24,7 +20,7 @@ export default function Donate() {
     const [cardComplete, setCardComplete] = useState<any>({ cardNumber: false, cardExpiry: false, cardCvc: false });
     const [paymentMessage, setPaymentMessage] = useState('');
     const [paymentSucceeded, setPaymentSucceeded] = useState(false);
-    const { basket } = useAppSelector(state => state.basket);
+    // const { basket } = useAppSelector(state => state.basket);
     const stripe = useStripe();
     const elements = useElements();
 
@@ -89,7 +85,7 @@ export default function Donate() {
                 setPaymentSucceeded(true);
                 setPaymentMessage('Plata a fost efectuata cu succes!');
                 setActiveStep(activeStep + 1);
-                dispatch(clearBasket());
+                // dispatch(clearBasket());
                 setLoading(false);
             } else {
                 setPaymentMessage(paymentResult.error?.message!);
@@ -148,7 +144,7 @@ export default function Donate() {
                             </Typography>
                             {paymentSucceeded ? (
                                 <Typography variant="subtitle1">
-                                    Numărul comenzii dvs. este #{orderNumber}. 
+                                    Numărul tranzactiei dvs. este #{orderNumber}. 
                                 </Typography>
                             ) : (
                                 <Button variant='contained' onClick={handleBack}>
