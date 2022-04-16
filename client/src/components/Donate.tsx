@@ -1,15 +1,16 @@
 import { Box, Button, Paper, Step, StepLabel, Stepper, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import { FieldValues, FormProvider, useForm } from "react-hook-form";
-import AddressForm from "./AdressForm";
-import PaymentForm from "./PaymentForm";
-import agent from "../../features/api/agent";
+import PaymentForm from "../pages/donate/PaymentForm";
 import { LoadingButton } from "@mui/lab";
-import { useAppDispatch, useAppSelector } from "../../features/store/configureStore";
 import { StripeElementType } from "@stripe/stripe-js";
-import { CardNumberElement, useElements, useStripe } from "@stripe/react-stripe-js";
+import AddressForm from "../pages/donate/AdressForm";
+import agent from "../features/api/agent";
+import { useAppDispatch, useAppSelector } from "../features/store/configureStore";
+import { CardNumberElement, useStripe } from "@stripe/react-stripe-js";
+import { useElements } from "@stripe/react-stripe-js";
 
-const steps = ['Adresa de livrare', 'Verifica-ti comanda', 'Detalii plata'];
+const steps = ['Shipping address', 'Review your order', 'Payment details'];
 
 export default function Donate() {
     const [activeStep, setActiveStep] = useState(0);
@@ -20,7 +21,6 @@ export default function Donate() {
     const [cardComplete, setCardComplete] = useState<any>({ cardNumber: false, cardExpiry: false, cardCvc: false });
     const [paymentMessage, setPaymentMessage] = useState('');
     const [paymentSucceeded, setPaymentSucceeded] = useState(false);
-    // const { basket } = useAppSelector(state => state.basket);
     const stripe = useStripe();
     const elements = useElements();
 
@@ -40,19 +40,15 @@ export default function Donate() {
             case 0:
                 return <AddressForm />;
             case 1:
-                return <Review />;
-            case 2:
                 return <PaymentForm cardState={cardState} onCardInputChange={onCardInputChange} />;
             default:
                 throw new Error('Unknown step');
         }
     }
 
-    const currentValidationSchema = validationSchema[activeStep];
-
     const methods = useForm({
         mode: 'all',
-        resolver: yupResolver(currentValidationSchema)
+
     });
 
     useEffect(() => {
@@ -65,12 +61,14 @@ export default function Donate() {
     }, [methods])
 
     async function submitOrder(data: FieldValues) {
+        var clientSecret = await agent.Payments.getClientSecret();
+        console.log(clientSecret);
         setLoading(true);
         const { nameOnCard, saveAddress, ...shippingAddress } = data;
         if (!stripe || !elements) return; // stripe not ready
         try {
             const cardElement = elements.getElement(CardNumberElement);
-            const paymentResult = await stripe.confirmCardPayment(basket?.clientSecret!, {
+            const paymentResult = await stripe.confirmCardPayment(await clientSecret!, {
                 payment_method: {
                     card: cardElement!,
                     billing_details: {
@@ -80,12 +78,10 @@ export default function Donate() {
             });
             console.log(paymentResult);
             if (paymentResult.paymentIntent?.status === 'succeeded') {
-                const orderNumber = await agent.Orders.create({ saveAddress, shippingAddress });
                 setOrderNumber(orderNumber);
                 setPaymentSucceeded(true);
-                setPaymentMessage('Plata a fost efectuata cu succes!');
+                setPaymentMessage('Thank you - we have received your payment');
                 setActiveStep(activeStep + 1);
-                // dispatch(clearBasket());
                 setLoading(false);
             } else {
                 setPaymentMessage(paymentResult.error?.message!);
@@ -144,11 +140,13 @@ export default function Donate() {
                             </Typography>
                             {paymentSucceeded ? (
                                 <Typography variant="subtitle1">
-                                    Numărul tranzactiei dvs. este #{orderNumber}. 
+                                    Your order number is. We have not emailed your order
+                                    confirmation, and will not send you an update when your order has
+                                    shipped as this is a fake store!
                                 </Typography>
                             ) : (
                                 <Button variant='contained' onClick={handleBack}>
-                                    Întoarceți-vă și încercați din nou
+                                    Go back and try again
                                 </Button>
                             )}
 
@@ -169,7 +167,7 @@ export default function Donate() {
                                     type='submit'
                                     sx={{ mt: 3, ml: 1 }}
                                 >
-                                    {activeStep === steps.length - 1 ? 'Plasați comanda' : 'Next'}
+                                    {activeStep === steps.length - 1 ? 'Place order' : 'Next'}
                                 </LoadingButton>
                             </Box>
                         </form>

@@ -19,9 +19,12 @@ import Meetings from './pages/meetings/Meetings';
 import PrivateRoute from './components/PrivateRoute';
 import Profile from './pages/profile/Profile';
 import MeetingDetails from './pages/meetings/MeetingDetails';
-import Donate from './pages/donate/Donate';
+import Donate from './components/Donate';
+import { loadStripe } from '@stripe/stripe-js';
+
 
 export default function App() {
+  const stripePromise = loadStripe("pk_test_51IzwHFErFg8RLNropkfWpnL37TzyR3eTpn0vY0EmatAeBwxlNPFJT2e2VtfIt2V8975y2W7kC1gcQ5tB5B332Y2x00yktsLIxN")
 
   const dispatch = useAppDispatch();
   const [loading, setLoading] = useState(true);
