@@ -6,9 +6,12 @@ import { LoadingButton } from "@mui/lab";
 import { StripeElementType } from "@stripe/stripe-js";
 import AddressForm from "../pages/donate/AdressForm";
 import agent from "../features/api/agent";
-import { useAppDispatch, useAppSelector } from "../features/store/configureStore";
+import { useAppDispatch } from "../features/store/configureStore";
 import { CardNumberElement, useStripe } from "@stripe/react-stripe-js";
 import { useElements } from "@stripe/react-stripe-js";
+
+// import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
+// import { useState } from "react";
 
 const steps = ['Shipping address', 'Review your order', 'Payment details'];
 
@@ -140,7 +143,7 @@ export default function Donate() {
                             </Typography>
                             {paymentSucceeded ? (
                                 <Typography variant="subtitle1">
-                                    Your order number is. We have not emailed your order
+                                    Your order number is not here. We have not emailed your order
                                     confirmation, and will not send you an update when your order has
                                     shipped as this is a fake store!
                                 </Typography>
@@ -178,3 +181,82 @@ export default function Donate() {
 
     );
 }
+
+// export default function Donate() {
+//     const [isPaymentLoading, setPaymentLoading] = useState(false);
+//     const stripe = useStripe();
+//     const elements = useElements();
+//     const payMoney = async (e:any) => {
+//       e.preventDefault();
+//       if (!stripe || !elements) {
+//         return;
+//       }
+//       setPaymentLoading(true);
+//       const clientSecret = getClientSecret();
+//       const paymentResult = await stripe.confirmCardPayment(clientSecret, {
+//         payment_method: {
+//           card: elements.getElement(CardElement),
+//           billing_details: {
+//             name: "Faruq Yusuff",
+//           },
+//         },
+//       });
+//       setPaymentLoading(false);
+//       if (paymentResult.error) {
+//         alert(paymentResult.error.message);
+//       } else {
+//         if (paymentResult.paymentIntent.status === "succeeded") {
+//           alert("Success!");
+//         }
+//       }
+//     };
+  
+//     return (
+//       <div
+//         style={{
+//           padding: "3rem",
+//         }}
+//       >
+//         <div
+//           style={{
+//             maxWidth: "500px",
+//             margin: "0 auto",
+//           }}
+//         >
+//           <form
+//             style={{
+//               display: "block",
+//               width: "100%",
+//             }}
+//             onSubmit = {payMoney}
+//             >
+//           <div
+//             style={{
+//               display: "flex",
+//               flexDirection: "column",
+//               alignItems: "center",
+//             }}
+//           >
+//             <CardElement
+//               className="card"
+//               options={{
+//                 style: {
+//                   base: {
+//                     backgroundColor: "white"
+//                   } 
+//                 },
+//               }}
+//             />
+//             <button
+//               className="pay-button"
+//               disabled={isPaymentLoading}
+//             >
+//               {isPaymentLoading ? "Loading..." : "Pay"}
+//             </button>
+//           </div>
+//         </form>
+//       </div>
+//     </div>
+//   );
+// }
+    

@@ -45,7 +45,7 @@ export default function Footer(){
                                 </Link>
                             </Box>
                             <Box sx={{ p: 1}}>
-                                <Link className="footerlinks" to='/servicii' color='inherit'>
+                                <Link className="footerlinks" to='/register' color='inherit'>
                                     Register
                                 </Link>
                             </Box>

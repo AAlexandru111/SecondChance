@@ -21,10 +21,11 @@ import Profile from './pages/profile/Profile';
 import MeetingDetails from './pages/meetings/MeetingDetails';
 import Donate from './components/Donate';
 import { loadStripe } from '@stripe/stripe-js';
+// import { Elements } from '@stripe/react-stripe-js';
 
 
 export default function App() {
-  const stripePromise = loadStripe("pk_test_51IzwHFErFg8RLNropkfWpnL37TzyR3eTpn0vY0EmatAeBwxlNPFJT2e2VtfIt2V8975y2W7kC1gcQ5tB5B332Y2x00yktsLIxN")
+  const stripePromise = loadStripe("pk_test_51Kos94Fg4hiD7PawJDTIUG7BycjL02iTiOK7xemaVgwtILOtnIFF4yzBvYHe8Fy3Y7nhysSDP4XjXow1CqlFxuZX00xehZlsff")
 
   const dispatch = useAppDispatch();
   const [loading, setLoading] = useState(true);
@@ -56,7 +57,9 @@ export default function App() {
         <Route exact path='/register' component={Register}></Route>
         <Route exact path='/jobs' component={Jobpage}></Route>
         <Route exact path='/meetings' component={Meetings}></Route>
-        <Route exact path='/donate' component={Donate}></Route>
+        {/* <Elements stripe={stripePromise}> */}
+          <Route exact path='/donate' component={Donate}></Route>
+        {/* </Elements> */}
         <Route exact path='/meetingdetails' component={MeetingDetails}></Route>
         {/* <PrivateRoute path='/applications' component={Applications} /> */}
         <PrivateRoute path='/profile' component={Profile} />

@@ -1,6 +1,6 @@
 
-import { AppBar, Badge, IconButton, List, ListItem, Switch, Toolbar, Typography, Box } from "@mui/material";
-import { Link, NavLink } from "react-router-dom";
+import { AppBar, List, ListItem, Toolbar, Typography, Box } from "@mui/material";
+import { NavLink } from "react-router-dom";
 import { useAppSelector } from "../../features/store/configureStore";
 import '../Navbar/Navbar.css'
 import SignedInMenu from "../SignedInMenu";
@@ -19,7 +19,6 @@ const rightLinks=[
 ]
 
 
-
 export default function Navbar() {
     const { user } = useAppSelector(state => state.account);
     
@@ -31,7 +30,7 @@ export default function Navbar() {
             <Box display='flex' alignItems='center'>
                 <Typography variant="h6" component={NavLink} to='/' exact
                  sx={{color: 'black', textDecoration:'none',fontFamily: 'Raleway',fontWeight: 700}}>
-                   <h5 className="logo">Second chance</h5>
+                   <h5 className="logo">Second Chance Foundation</h5>
                 </Typography>
 
             </Box>
