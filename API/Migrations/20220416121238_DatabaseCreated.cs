@@ -6,7 +6,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace API.Migrations
 {
-    public partial class Stripe : Migration
+    public partial class DatabaseCreated : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -242,8 +242,8 @@ namespace API.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "5f9df7e3-1fe6-433e-ae20-c14f0b7089cd", "c1845e74-42f9-492f-9bac-bd8d82bc9f25", "Admin", "ADMIN" },
-                    { "cdaac094-90e0-4fce-96db-8c15c6253df3", "d46f1d4b-ce07-4fdf-8ac2-3934e362315b", "Member", "MEMBER" }
+                    { "4b4d8d33-9578-45e5-a2c6-0217760299fe", "dfedcc0b-8e03-4d93-993d-90e3fef67057", "Member", "MEMBER" },
+                    { "57880779-559e-4308-b262-a55aae3277e7", "5dad221d-bec0-468f-9ec2-227ce9fb814e", "Admin", "ADMIN" }
                 });
 
             migrationBuilder.CreateIndex(

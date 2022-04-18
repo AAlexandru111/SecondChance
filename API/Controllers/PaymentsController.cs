@@ -1,17 +1,17 @@
-//using System;
-//using System.Collections.Generic;
-//using System.Linq;
-//using System.Threading.Tasks;
-//using API.Data;
-//using API.DTOs;
-//using API.Entities;
-//using API.Extensions;
-//using API.Services;
-//using Microsoft.AspNetCore.Authorization;
-//using Microsoft.AspNetCore.Mvc;
+// using System;
+// using System.Collections.Generic;
+// using System.Linq;
+// using System.Threading.Tasks;
+// using API.Data;
+// using API.DTOs;
+// using API.Entities;
+// using API.Extensions;
+// using API.Services;
+// using Microsoft.AspNetCore.Authorization;
+// using Microsoft.AspNetCore.Mvc;
 
-//namespace API.Controllers
-//{
+// namespace API.Controllers
+// {
 //    public class PaymentsController : BaseApiController
 //    {
 //        private readonly PaymentService _paymentService;
@@ -48,7 +48,7 @@
 
 
 //    }
-//}
+// }
 
 
 using System;

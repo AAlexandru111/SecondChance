@@ -106,12 +106,12 @@ namespace API.Data
                 new Article
                 {
                     Title="7 interview skills that will get you hired in 2022",
-                    Content="Overview of skills for an interview Let’s start with the basics. Here are the most important interview skills to focus on and how to make sure you project professionalism and expertise in your field.Interview preparationKnow the companySpeaking skills (clear, cohesive, calm)Think first, speak secondListeningPart of having a successful interview comes from taking the time to prepare . Winging it rarely turns out well, and an interviewer can sense ill preparation from a mile away. So, what should your preparation entail? We suggest you re-read the job description several times so that you are capable of discussing the position and the requirements associated with it comfortably. Think about how you can illustrate the desired skills with the experience you have. "
+                    Content="Overview of skills for an interview. Let’s start with the basics. Here are the most important interview skills to focus on and how to make sure you project professionalism and expertise in your field. Interview preparation. Know the company. Speaking skills (clear, cohesive, calm). Part of having a successful interview comes from taking the time to prepare. Winging it rarely turns out well, and an interviewer can sense ill preparation from a mile away. So, what should your preparation entail? We suggest you re-read the job description several times so that you are capable of discussing the position and the requirements associated with it comfortably. Think about how you can illustrate the desired skills with the experience you have. "
                  },
                 new Article
                 {
                     Title="Tips for before the interview",
-                    Content="1. Start by researching the company and your interviewers. Understanding key information about the company you’re interviewing with can help you go into your interview with confidence. Using the company’s website, social media posts and recent press releases will provide a solid understanding of the company’s goals and how your background makes you a great fit. Review our Complete Guide to Researching a Company."
+                    Content="Start by researching the company and your interviewers. Understanding key information about the company you’re interviewing with can help you go into your interview with confidence. Using the company’s website, social media posts and recent press releases will provide a solid understanding of the company’s goals and how your background makes you a great fit. Review our Complete Guide to Researching a Company."
 
                  },
                 new Article
