@@ -28,7 +28,7 @@
   
   </div>
 <div align="center" style="gap: 100px;">
-  <p>:point_down: Pictures below: </p>
+  
   <img src="https://user-images.githubusercontent.com/86423309/166222800-42b6a1ef-03cb-45d5-9812-ee5042eaafd3.png" width="750">
   <img src="https://user-images.githubusercontent.com/86423309/166222982-f8c9b529-35b0-446f-979c-36a6cf5ef240.png" width="750">
   <img src="https://user-images.githubusercontent.com/86423309/166222851-9eab7953-f330-4792-8f7f-9f8d6fb6ac8e.png" width="750">
